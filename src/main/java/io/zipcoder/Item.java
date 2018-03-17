@@ -1,10 +1,14 @@
 package io.zipcoder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
     private String name;
-    private Double price;
+    private List<Double> prices;
     private String type;
     private String expiration;
+    private int timesSeen;
 
     /**
      * Item should not be created unless you have all of the elements, which is why you are forcing
@@ -18,17 +22,19 @@ public class Item {
      */
     public Item(String name, Double price, String type, String expiration) {
         this.name = name;
-        this.price = price;
+        prices = new ArrayList<>();
+        prices.add(price);
         this.type = type;
         this.expiration = expiration;
+        timesSeen = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public Double getPrice() {
-        return price;
+    public List<Double> getPrices() {
+        return prices;
     }
 
     public String getType() {
@@ -39,8 +45,13 @@ public class Item {
         return expiration;
     }
 
+    public void addPrice(Double price) {
+        prices.add(price);
+    }
+
     @Override
     public String toString() {
-        return String.format("name: %-10s | price: %-7s | type: %-7s | expiration: %-10s", name, price, type, expiration);
+        //return String.format("name: %-10s | price: %-7s | type: %-7s | expiration: %-10s", name, price, type, expiration);
+        return null;
     }
 }
