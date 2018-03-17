@@ -41,6 +41,11 @@ public class ItemParser {
         return input.toLowerCase();
     }
 
+    protected String replaceZeros(String input) {
+        Pattern p = Pattern.compile("(?![a-z]+)0(?=[a-z]*)");
+        return p.matcher(input).replaceAll("o");
+    }
+
     public ArrayList<String> findKeyValuePairsInRawItemData(String rawItem) {
         String stringPattern = "[;|^|!|%|*|@]";
         return splitStringWithRegexPattern(stringPattern, rawItem);

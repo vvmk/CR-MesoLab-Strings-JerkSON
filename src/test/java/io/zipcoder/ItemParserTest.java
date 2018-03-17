@@ -79,4 +79,24 @@ public class ItemParserTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testReplaceZeros() {
+        String given = "co0kies";
+
+        String expected = "cookies";
+        String actual = itemParser.replaceZeros(given);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testReplaceZeroesFromNormalWord() {
+        String given = "fine";
+
+        String expected = "fine";
+        String actual = itemParser.replaceZeros(given);
+
+        assertEquals(expected, actual);
+    }
 }
