@@ -24,7 +24,7 @@ public class ItemAnalyserTest {
         };
 
         int expected = 3;
-        int actual = ItemAnalyser.getOccurrencesOfItem(items[0], Arrays.asList(items));
+        int actual = ItemAnalyser.getOccurrencesOfItem(items[0].getName(), Arrays.asList(items));
 
         assertEquals(expected, actual);
     }
@@ -39,7 +39,35 @@ public class ItemAnalyserTest {
         };
 
         int expected = 2;
-        int actual = ItemAnalyser.getOccurrencesOfPrice(items[1].getPrice(), items[1], Arrays.asList(items));
+        int actual = ItemAnalyser.getOccurrencesOfPrice(items[1].getPrice(), items[1].getName(), Arrays.asList(items));
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBuildSet() {
+        Item[] items = {
+                new Item("milk", 1.25, "food", "1/1/1970"),
+                new Item("milk", 1.25, "food", "1/1/1934"),
+                new Item("bread", 2.00, "food", "4/4/4444"),
+                new Item("milk", 3.00, "food", "1/1/20XX")
+        };
+        int expected = 2;
+        int actual = ItemAnalyser.buildSetFromItems(Arrays.asList(items)).size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBuildPriceSet() {
+        Item[] items = {
+                new Item("milk", 1.25, "food", "1/1/1970"),
+                new Item("milk", 1.25, "food", "1/1/1934"),
+                new Item("bread", 2.00, "food", "4/4/4444"),
+                new Item("milk", 3.00, "food", "1/1/20XX")
+        };
+        int expected = 2;
+        int actual = ItemAnalyser.buildSetFromPrices("milk", Arrays.asList(items)).size();
 
         assertEquals(expected, actual);
     }

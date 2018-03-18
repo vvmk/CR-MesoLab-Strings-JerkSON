@@ -26,7 +26,9 @@ public class ItemParser {
         }
 
         try {
-            return new Item(pMap.get("name"), Double.parseDouble(pMap.get("price")), pMap.get("type"), pMap.get("expiration"));
+            Double price = Double.parseDouble(pMap.get("price"));
+            String name = replaceZeros(pMap.get("name"));
+            return new Item(name, price, pMap.get("type"), pMap.get("expiration"));
         } catch (RuntimeException re) {
             throw new ItemParseException("creation failure: " + pMap.toString());
         }

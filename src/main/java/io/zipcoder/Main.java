@@ -25,11 +25,10 @@ public class Main {
             }
         }
 
-        System.out.println("\n**********************");
+        System.out.println(ItemAnalyser.analyze(items));
         System.out.println("Exceptions found: " + exceptionCount);
-        System.out.println("**********************\n");
 
-        items.forEach(i -> System.out.println(i.toString()));
+        //items.forEach(i -> System.out.println(i.toString()));
     }
 
     public String readRawDataToString() throws Exception {
